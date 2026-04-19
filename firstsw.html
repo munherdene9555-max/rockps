@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="mn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Haich Chuluu Daavuu</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #eef2ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .box {
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            text-align: center;
+            width: 350px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            margin-bottom: 10px;
+        }
+
+        button {
+            margin: 8px;
+            padding: 12px 18px;
+            font-size: 18px;
+            border: none;
+            border-radius: 10px;
+            background: #4f46e5;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #3730a3;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        #choices {
+            margin-top: 15px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <h1>Haich Chuluu Daavuu</h1>
+        <p>Negiig ni songood computer-tai toglooroi.</p>
+
+        <button onclick="play('Chuluu')">Chuluu</button>
+        <button onclick="play('Daavuu')">Daavuu</button>
+        <button onclick="play('Haich')">Haich</button>
+
+        <div id="choices"></div>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function play(user) {
+            const options = ["Chuluu", "Daavuu", "Haich"];
+            const computer = options[Math.floor(Math.random() * 3)];
+
+            document.getElementById("choices").textContent =
+                "Chi: " + user + " | Computer: " + computer;
+
+            let result = "";
+
+            if (user === computer) {
+                result = "Tentslee!";
+            } else if (
+                (user === "Chuluu" && computer === "Haich") ||
+                (user === "Daavuu" && computer === "Chuluu") ||
+                (user === "Haich" && computer === "Daavuu")
+            ) {
+                result = "Chi yallaa!";
+            } else {
+                result = "Computer yallaa!";
+            }
+
+            document.getElementById("result").textContent = result;
+        }
+    </script>
+</body>
+
+</html>
